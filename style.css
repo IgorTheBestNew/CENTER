@@ -194,7 +194,7 @@ h6 {
   font-weight: 700;
   text-transform: uppercase;
 }
-
+/* header стилизация */
 .button {
   display: flex;
   align-items: center;
@@ -360,4 +360,52 @@ h6 {
   .header-actions {
     column-gap: 15px;
   }
+}
+/* main стилизация */
+.banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  min-height: 650px;
+  padding: 36px 70px;
+  color: var(--color-light);
+  background-color: var(--color-dark-alternate);
+}
+.banner-body {
+  text-transform: uppercase;
+}
+.banner-info {
+  display: flex;
+  align-items: end;
+}
+.banner-info::before {
+  content: "";
+  width: 130px;
+  aspect-ratio: 1;
+  margin-right: 30px;
+  background: url("/icons/bold-arrow-down-right.svg") center/contain no-repeat;
+}
+.banner-title {
+  font-size: 250px;
+  line-height: 1;
+  color: #28a745;
+}
+.banner-pagination-list {
+  display: flex;
+  justify-content: center;
+  column-gap: 14px;
+}
+.banner-pagination-item {
+  display: flex;
+}
+.banner-pagination-buttom {
+  width: 10px;
+  aspect-ratio: 1;
+  padding: 0;
+  background-color: transparent;
+  border: var(--border);
+  border-radius: 50%;
+}
+.banner-pagination-buttom.is-current {
+  background-color: var(--color-light);
 }
