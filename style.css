@@ -139,6 +139,8 @@ body {
   --container-padding-x: 15px;
 
   --transition-duration: 0.2s;
+
+  --header-height: 90px;
 }
 
 body {
@@ -333,6 +335,9 @@ h6 {
     flex-wrap: wrap;
     row-gap: 10px;
     padding-top: 20px;
+  }
+  .banner,
+  .header {
     padding-inline: 15px;
   }
   .header-menu {
@@ -341,6 +346,9 @@ h6 {
   }
   .header-menu-link {
     height: 50px;
+  }
+  .banner {
+    row-gap: 10px;
   }
 }
 
@@ -360,13 +368,19 @@ h6 {
   .header-actions {
     column-gap: 15px;
   }
+  .banner-info {
+    margin-bottom: 5px;
+  }
+  .banner-info::before {
+    margin-right: 10px;
+  }
 }
 /* main стилизация */
 .banner {
   display: flex;
   flex-direction: column;
   justify-content: end;
-  min-height: 650px;
+  min-height: calc(100vh - var(--header-height));
   padding: 36px 70px;
   color: var(--color-light);
   background-color: var(--color-dark-alternate);
@@ -377,16 +391,19 @@ h6 {
 .banner-info {
   display: flex;
   align-items: end;
+  font-size: clamp(16px, 1.56vw, 30px);
+  line-height: 1.27;
+  font-weight: 700;
 }
 .banner-info::before {
   content: "";
-  width: 130px;
+  width: clamp(60px, 10.1vw, 194px);
   aspect-ratio: 1;
   margin-right: 30px;
   background: url("/icons/bold-arrow-down-right.svg") center/contain no-repeat;
 }
 .banner-title {
-  font-size: 250px;
+  font-size: min(18.75vw, 360px);
   line-height: 1;
   color: #28a745;
 }
@@ -399,13 +416,25 @@ h6 {
   display: flex;
 }
 .banner-pagination-buttom {
-  width: 10px;
-  aspect-ratio: 1;
-  padding: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
   background-color: transparent;
-  border: var(--border);
+  border: none;
   border-radius: 50%;
 }
-.banner-pagination-buttom.is-current {
+.banner-pagination-buttom::after {
+  content: "";
+  width: 10px;
+  aspect-ratio: 1;
+  border: var(--border);
+  border-radius: 50%;
+  transition-duration: var(--transition-duration);
+}
+.banner-pagination-buttom.is-current::after {
   background-color: var(--color-light);
+}
+.banner-pagination-buttom:not(.is-current):hover::after {
+  border-color: var(--color-light-gray);
 }
